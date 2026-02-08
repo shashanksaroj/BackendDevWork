@@ -36,6 +36,22 @@ how to inject
 when to destroy
 
 
+Types of ioc container:
+
+BeanFactory loads beans on-demand, while ApplicationContext loads all beans at startup. Thus, BeanFactory is lightweight as compared to ApplicationContext.
+
+
+ApplicationContext:
+ApplicationContext, defined in org.springframework.context, is an advanced container that extends BeanFactory and provides additional enterprise-level features.
+
+Key Features
+
+Eager initialization (by default)
+Annotation-based configuration
+Event handling
+Internationalization (i18n)
+Automatic post-processor registration
+
 Interview one-liner
 
 > IoC means the framework controls object creation instead of the application.
