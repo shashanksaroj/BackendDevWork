@@ -1,6 +1,3 @@
-Perfect 👍
-Let’s START STEP 1 — Spring Core (SDE-2 level)
-I’ll explain concept → internal working → interview traps → mini task.
 
 
 ---
@@ -264,19 +261,3 @@ Prepare answers for these:
 
 ---
 
-✔️ You’re Done With Step 1 When
-
-You can explain lifecycle without code
-
-You never use field injection
-
-You can answer why, not just how
-
-
-
----
-
-Next?
-
-Type step 2
-We’ll deep-dive into Spring Boot internals & auto-configuration 💥
