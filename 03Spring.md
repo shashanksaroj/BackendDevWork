@@ -234,7 +234,7 @@ feature:
 
 > “Spring Boot relies on conditional auto-configuration based on classpath and properties, not runtime reflection.”
 
-
+to change server to jetty, add dependency i pom.xml
 
 
 ---
