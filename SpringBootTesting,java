@@ -1,0 +1,258 @@
+/*
+================================================================================
+              SPRING BOOT TESTING – JUNIT + MOCKITO
+                    SDE-2 INTERVIEW NOTES
+================================================================================
+
+This SINGLE FILE contains:
+✔ JUnit 5 basics
+✔ Mockito core concepts
+✔ @Mock vs @MockBean
+✔ Unit vs Integration testing
+✔ Spring Boot testing annotations
+✔ Controller testing (MockMvc)
+✔ Repository testing
+✔ Common interview questions & answers
+✔ Ready-made interview sentences
+
+------------------------------------------------------------------------------
+SECTION 1: WHY TESTING?
+------------------------------------------------------------------------------
+• Prevents regressions
+• Safe refactoring
+• Improves code quality
+• Required for CI/CD pipelines
+• Interviewers expect you to know testing depth at SDE-2
+
+------------------------------------------------------------------------------
+SECTION 2: TYPES OF TESTS IN SPRING BOOT
+------------------------------------------------------------------------------
+1️⃣ Unit Test
+   - Tests ONE class
+   - Dependencies are mocked
+   - Fast
+   - Uses Mockito + JUnit
+   - No Spring context
+
+2️⃣ Slice Test
+   - Tests ONE LAYER
+   - Examples:
+     @WebMvcTest  → Controller layer
+     @DataJpaTest → Repository layer
+
+3️⃣ Integration Test
+   - Full application context
+   - Uses real beans
+   - Slower
+   - Uses @SpringBootTest
+
+------------------------------------------------------------------------------
+SECTION 3: JUNIT 5 BASICS (MUST KNOW)
+------------------------------------------------------------------------------
+Annotations:
+• @Test          → Marks test method
+• @BeforeEach   → Runs before every test
+• @AfterEach
+• @BeforeAll    → Runs once (static)
+• @AfterAll
+• @DisplayName  → Readable test name
+
+Assertions:
+• assertEquals(expected, actual)
+• assertNotNull(obj)
+• assertTrue(condition)
+• assertThrows(Exception.class, () -> method())
+• assertAll(() -> {}, () -> {})
+
+INTERVIEW LINE:
+"JUnit provides test lifecycle management and assertions."
+
+------------------------------------------------------------------------------
+SECTION 4: MOCKITO – MOST IMPORTANT PART
+------------------------------------------------------------------------------
+Why Mockito?
+• To isolate business logic
+• To mock dependencies
+• To avoid DB, network, external calls
+
+Core Annotations:
+• @Mock
+    - Creates fake object
+    - No real method execution
+
+• @InjectMocks
+    - Creates real object
+    - Injects mocks into it
+
+• @Spy
+    - Partial mock (real + fake)
+
+Enable Mockito:
+• @ExtendWith(MockitoExtension.class)
+
+------------------------------------------------------------------------------
+SECTION 5: STUBBING IN MOCKITO
+------------------------------------------------------------------------------
+Stubbing = defining mock behavior
+
+Examples:
+• when(repo.findById(1)).thenReturn(data);
+• when(service.call()).thenThrow(Exception.class);
+• doNothing().when(repo).save(any());
+
+IMPORTANT:
+• use doReturn() for:
+  - spies
+  - final methods
+  - void methods
+
+------------------------------------------------------------------------------
+SECTION 6: VERIFYING INTERACTIONS
+------------------------------------------------------------------------------
+verify(repo).save(100);
+verify(repo, times(1)).save(any());
+verify(repo, never()).delete(any());
+
+INTERVIEW LINE:
+"verify() ensures interaction happened, not just output."
+
+------------------------------------------------------------------------------
+SECTION 7: ARGUMENT CAPTOR (INTERVIEW FAVORITE ⭐)
+------------------------------------------------------------------------------
+Used when:
+• You want to capture values passed to a mock
+
+Example:
+ArgumentCaptor<Integer> captor =
+    ArgumentCaptor.forClass(Integer.class);
+
+verify(repo).save(captor.capture());
+assertEquals(100, captor.getValue());
+
+------------------------------------------------------------------------------
+SECTION 8: EXCEPTION TESTING
+------------------------------------------------------------------------------
+How to test exception?
+
+assertThrows(IllegalArgumentException.class, () -> {
+    service.pay(-1);
+});
+
+INTERVIEW LINE:
+"I use assertThrows to validate error scenarios."
+
+------------------------------------------------------------------------------
+SECTION 9: SPRING BOOT TEST ANNOTATIONS (HIGHLY ASKED)
+------------------------------------------------------------------------------
+
+@SpringBootTest
+• Loads FULL application context
+• Slow
+• Used for integration tests
+
+@WebMvcTest(Controller.class)
+• Loads only MVC components
+• Used for controller tests
+• Uses MockMvc
+• Dependencies mocked using @MockBean
+
+@DataJpaTest
+• Tests repository layer
+• Uses in-memory DB (H2)
+• Fast
+• Rolls back after each test
+
+------------------------------------------------------------------------------
+SECTION 10: @Mock vs @MockBean (VERY COMMON)
+------------------------------------------------------------------------------
+@Mock
+• From Mockito
+• No Spring context
+• Used in unit tests
+
+@MockBean
+• From Spring Boot
+• Replaces bean in Spring context
+• Used in controller/integration tests
+
+ONE-LINER ANSWER:
+"@Mock is for unit tests, @MockBean is for Spring context tests."
+
+------------------------------------------------------------------------------
+SECTION 11: CONTROLLER TESTING (MockMvc)
+------------------------------------------------------------------------------
+MockMvc:
+• Tests controller without starting server
+• Simulates HTTP requests
+
+Used with:
+@WebMvcTest
+
+Example flow:
+• mock service
+• perform request
+• expect status & response
+
+INTERVIEW LINE:
+"MockMvc tests REST APIs without deploying application."
+
+------------------------------------------------------------------------------
+SECTION 12: REPOSITORY TESTING
+------------------------------------------------------------------------------
+@DataJpaTest
+• Uses real repository
+• Uses embedded DB
+• No service or controller layer
+
+------------------------------------------------------------------------------
+SECTION 13: UNIT VS INTEGRATION TEST
+------------------------------------------------------------------------------
+Unit Test:
+• Fast
+• Mocked dependencies
+• Business logic focus
+
+Integration Test:
+• Slow
+• Real beans
+• Real DB / messaging
+
+------------------------------------------------------------------------------
+SECTION 14: COMMON INTERVIEW QUESTIONS
+------------------------------------------------------------------------------
+Q: Why Mockito?
+A: To isolate class under test.
+
+Q: Why @WebMvcTest?
+A: To test controller layer only.
+
+Q: How do you test exceptions?
+A: assertThrows()
+
+Q: How to test DB?
+A: @DataJpaTest
+
+Q: How to test full flow?
+A: @SpringBootTest
+
+------------------------------------------------------------------------------
+SECTION 15: FINAL INTERVIEW SCRIPT (MEMORIZE)
+------------------------------------------------------------------------------
+"In Spring Boot, I use JUnit 5 for test lifecycle and assertions.
+Mockito helps me mock dependencies for fast unit tests.
+I use @WebMvcTest for controller testing, @DataJpaTest for repositories,
+and @SpringBootTest for integration testing.
+I prefer unit tests with mocks for speed and isolation."
+
+================================================================================
+END OF FILE
+================================================================================
+*/
+
+// NOTE:
+// This class is intentionally EMPTY.
+// This file is for INTERVIEW REVISION, not execution.
+
+public class SpringBootTestingInterviewNotes {
+    // Read. Revise. Crack interview.
+}
